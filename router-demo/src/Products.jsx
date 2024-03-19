@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import SearchProduct from "./SearchProduct";
+import { useDispatch } from "react-redux";
+import { addCart } from "./cartSlice";
 
 const Products = () => {
-  
   let [products, setProducts] = useState([]);
   let [filtered, setFilter] = useState([]);
-  
 
   async function productsfetch() {
     try {
@@ -23,7 +23,7 @@ const Products = () => {
   }
 
   const handlefilter = (filterTerm) => {
-    if (filterTerm === "drfault") {
+    if (filterTerm === "default") {
       setFilter(products);
     } else {
       const filteredProduct = products.filter((p) =>
@@ -37,28 +37,36 @@ const Products = () => {
     productsfetch();
   }, []);
 
-  const handlesearch=(searchterm)=>{
-       const saerchProducts = products.filter((p)=>p.title.toLowerCase().includes(searchterm) || 
-       p.category.toLowerCase().includes(searchterm) ||
-       p.description.toLowerCase().includes(searchterm)
-       )
-       setFilter(saerchProducts);
-  }
+  const handlesearch = (searchterm) => {
+    const saerchProducts = products.filter(
+      (p) =>
+        p.title.toLowerCase().includes(searchterm) ||
+        p.category.toLowerCase().includes(searchterm) ||
+        p.description.toLowerCase().includes(searchterm)
+    );
+    setFilter(saerchProducts);
+  };
+
+  let dispatch = useDispatch();
 
   return (
     <>
-    <SearchProduct handlesearch={handlesearch}></SearchProduct> <br/>
-
-      <select id="sort" onChange={(e) => handlefilter(e.target.value)}>
-        <option value="default">Select</option>
-        <option value="smartphones">Smartphones</option>
-        <option value="laptops">Laptops</option>
-        <option value="skincare">Skincare</option>
-        <option value="groceries">Groceries</option>
-      </select>
+      <SearchProduct id="search" handlesearch={handlesearch}></SearchProduct>{" "}
+      <br />
+      <h3 class="sort">
+        {" "}
+        Select category:{" "}
+        <select class="sort" onChange={(e) => handlefilter(e.target.value)}>
+          <option value="default">Select</option>
+          <option value="smartphones">Smartphones</option>
+          <option value="laptops">Laptops</option>
+          <option value="skincare">Skincare</option>
+          <option value="groceries">Groceries</option>
+        </select>
+      </h3>
       <div>
         <h1>Products</h1>
-        <table>
+        <table id="table">
           <thead>
             <tr>
               <th>ID</th>
@@ -71,23 +79,25 @@ const Products = () => {
           {filtered.length > 0
             ? filtered.map((pp) => (
                 <tr>
-                  <Link
-                    to={`/products/${pp.id}`}
-                  >
-                    <td>{pp.id}</td>
+                  <Link to={`/products/${pp.id}`}>
+                    <td>
+                      <h2>{pp.id}</h2>
+                    </td>
                   </Link>
-                  <td>{pp.title.toUpperCase()}</td>
+                  <td>
+                    <b>{pp.title.toUpperCase()}</b>
+                  </td>
 
                   <td>
-                    {" "}
                     <img src={pp.images[0]} />
                   </td>
 
-                  <td>{pp.description.toUpperCase()}</td>
-                  <td>{pp.price}</td>
+                  <td><b>{pp.description}</b></td>
+                  <td><b>${pp.price}</b></td>
                 </tr>
               ))
             : "...Loading"}
+        
         </table>
       </div>
     </>

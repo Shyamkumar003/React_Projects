@@ -12,7 +12,7 @@ const SearchProduct = ({handlesearch}) => {
   return (
 
     <div >
-   Search : <input  id='search' type='text'  value={searchProduct} onChange={(e)=> handlechange(e.target.value)}/> 
+   <h3  class='searchTitle'> Search : <br></br><input   class='search' type='text'  value={searchProduct} onChange={(e)=> handlechange(e.target.value)}/></h3 >
     </div>
 
   )

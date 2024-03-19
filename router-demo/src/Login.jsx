@@ -2,22 +2,24 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = ({ handleLogin }) => {
-    let initValue = {'username':'', 'password':''}
+    let initValue = {'username': '', 'password': ''}
   const [loginUser, setLoginUser] = useState(initValue);
 
   let navigate = useNavigate()
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name)
+    // console.log(name)
     setLoginUser({ ...loginUser, [name]: value });
+    console.log(loginUser)
   };
+  // console.log("hai");
 
   const handleSubmit = (e) => {
     e.preventDefault()
     // Here you can add your logic to authenticate the user
-    console.log("Username:", loginUser.username);
-    console.log("Password:", loginUser.password);
+    // console.log("Username:", loginUser.username);
+    // console.log("Password:", loginUser.password);
     
     handleLogin(loginUser);
 
@@ -38,7 +40,7 @@ const Login = ({ handleLogin }) => {
             name="username"
             value={loginUser.username}
             onChange={(e) => handleChange(e)}
-            required
+            
           />
         </div>
         <div>
@@ -48,7 +50,7 @@ const Login = ({ handleLogin }) => {
             name="password"
             value={loginUser.password}
             onChange={(e) => handleChange(e)}
-            required
+            
           />
         </div>
         <button type="submit">Login</button>
@@ -76,9 +78,6 @@ const Login = ({ handleLogin }) => {
   console.error("loginUser is not an array")
   )
 } */}
-
-
-      
 
     </div>
   );

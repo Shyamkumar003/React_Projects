@@ -2,7 +2,8 @@ import React from "react";
 import { addEvent, deleteEvent ,toggle,edit} from "./Todoslice";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-
+import { useEffect } from "react";
+import axios from 'axios';
 const Todo = () => {
   let [todoInput, setTodoInput] = useState("");
 
@@ -13,12 +14,16 @@ const Todo = () => {
   const todoData = useSelector((state) => state.Todo);
 
   const dispatch3 = useDispatch();
-
+ 
   const handleEdit=(todo)=>{
        setTodoInput(todo.title);
        setTodo(todo);
        setEditable(true);
   }
+
+  useEffect(()=>{
+    
+      },[todoInput])
 
   return (
     <div>
@@ -35,6 +40,12 @@ const Todo = () => {
         <br></br>
         <button
           onClick={() => {
+            
+            {let todo={'todoInput':todoInput}
+            axios.post('http://localhost:3001/add',todo)
+                    .then(result=> console.log(result))
+                    .catch(err=> console.log(err))}
+
             if(!isEditable){
             dispatch3(addEvent(todoInput));
             setTodoInput("");

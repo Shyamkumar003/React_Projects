@@ -7,9 +7,10 @@ import Login from "./Login";
 import { useState } from "react";
 import Logout from "./Logout";
 import Products from "./Products";
-import PRds from "./PRds";
 import Layout from "./Layout";
 import ProductID from "./PRds";
+import { useSelector } from "react-redux";
+import Cart from "./Cart";
 
 function App() {
   // let services = ["Service A", "Service B", "Service C"]
@@ -26,6 +27,8 @@ function App() {
   const handleLogout = () => {
     setUser(null);
   };
+
+  const data = useSelector((state)=>state.cartApi.cart)
 
   return (
     <div className="App">
@@ -46,20 +49,29 @@ function App() {
           <br />
           {user ? (
             <>
-              <Link> <h2>Welcome {user.username}</h2></Link>
+              <Link> <h2>Welcome "/n" 
+                {user.username}</h2></Link>
               {/* <Link onClick={()=> setUser(null)}>LogOut</Link> */}
-              <Link to="/logout">
-                <h1>LogOut</h1>
-              </Link>
-              <br />
+              
               <Link to="/products">
                 <h1>Products</h1>
               </Link>
+              <Link to="/cart">
+                <h1>Cart{data.length}</h1>
+              </Link>
+              <Link to="/logout">
+                <h1>LogOut</h1>
+              </Link>
+              
+              <Link to="/contact">
+                <h1>contact</h1>
+             </Link>
             </>
           ) : (
             <Link to="/login">
               <h1>Login</h1>
             </Link>
+                      
           )}
         </nav>
 
@@ -83,6 +95,12 @@ function App() {
               path="/products/:productid"
               element={<ProductID></ProductID>}
             ></Route>
+          
+             <Route
+              path="/cart"
+              element={<Cart></Cart>}
+            ></Route>
+           
           </Route>
         </Routes>
       </BrowserRouter>
