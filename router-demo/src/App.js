@@ -74,7 +74,7 @@ function App() {
                       
           )}
         </nav>
-
+             
         <Routes>
           <Route path="/" element={<Layout></Layout>}>
             <Route path="/home" element={<Home></Home>}></Route>

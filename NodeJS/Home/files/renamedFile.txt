@@ -1,0 +1,3 @@
+Hi, this file is written by fs.writeFile module on files directory
+
+ This is an appended content for append file module

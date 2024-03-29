@@ -21,9 +21,9 @@ const Todo = () => {
        setEditable(true);
   }
 
-  useEffect(()=>{
+  // useEffect(()=>{
     
-      },[todoInput])
+  //     },[todoInput])
 
   return (
     <div>
