@@ -1,11 +1,11 @@
 import './App.css';
-import Todo from './Todo';
+import Task from './Task';
 
 
 function App() {
   return (
     <>
-    <Todo></Todo>
+    <Task/>
     </>
   );
 }
