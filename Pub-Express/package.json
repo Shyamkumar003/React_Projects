@@ -1,0 +1,24 @@
+{
+  "name": "pub-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shyamkumar003/React_Projects.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shyamkumar003/React_Projects/issues"
+  },
+  "homepage": "https://github.com/Shyamkumar003/React_Projects#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "pub": "^0.2.0",
+    "pub-cli": "^1.0.0"
+  }
+}

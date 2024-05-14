@@ -1,0 +1,7 @@
+doctype html
+html
+    head
+        title PugDemo
+    body
+        h1 Welcome to pub page 
+        

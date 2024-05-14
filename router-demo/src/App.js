@@ -49,8 +49,8 @@ function App() {
           <br />
           {user ? (
             <>
-              <Link> <h2>Welcome "/n" 
-                {user.username}</h2></Link>
+              <Link> <h2><p>Welcome <br></br> 
+                {user.username}</p></h2></Link>
               {/* <Link onClick={()=> setUser(null)}>LogOut</Link> */}
               
               <Link to="/products">
